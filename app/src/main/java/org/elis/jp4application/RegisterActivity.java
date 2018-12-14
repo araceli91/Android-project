@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText phoneNumberEt;
 
     Button registerBtn;
+
 
     boolean emailValidated, passwordValidated, phoneValidated;
 
@@ -130,6 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void enableButton() {
             registerBtn.setEnabled((emailValidated && passwordValidated && phoneValidated));
     }
+
 
 
 }

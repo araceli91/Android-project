@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JP4application</string>
+    <string name="first_button">Primero</string>
+    <string name="welcome">Bienvenido</string>
+</resources>
