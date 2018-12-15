@@ -1,6 +1,8 @@
 package org.elis.jp4application;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,6 +19,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity";
     private static final int PASSWORD_LENGTH = 6;
 
+    SharedPreferences sharePref;
+    SharedPreferences.Editor editor;
+    LinearLayout padre;
+
     EditText emailET;
     EditText passwordET;
 
@@ -26,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout linear;
     public static final String WELCOME = "WELCOME";
 
+    Switch darkModeSwitch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,16 +41,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
 
+        padre = findViewById(R.id.padre);
+
         emailET = findViewById(R.id.email_et);
         passwordET = findViewById(R.id.password_et);
 
         loginBtn = findViewById(R.id.login_btn);
         registerBtn = findViewById(R.id.register_btn);
 
+<<<<<<< HEAD
         switchSW = findViewById(R.id.onOff);
         linear = findViewById(R.id.back);
 
         registerBtn.setVisibility(View.VISIBLE);
+=======
+        darkModeSwitch = findViewById(R.id.dark_mode_switch);
+
+        sharePref = getPreferences(Context.MODE_PRIVATE);
+        editor = sharePref.edit();
+
+        darkModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                    changeColor(isChecked);
+
+            }
+        });
+>>>>>>> master
 
         registerBtn.setOnClickListener(this);
 
@@ -62,6 +87,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.i(TAG, "activity created");
 
+        darkModeSwitch.setChecked(getColorValueFromMemory());
+
+    }
+
+
+    private void changeColor(boolean isChecked){
+        padre.setBackgroundColor(getResources().
+                getColor(isChecked ? R.color.cardview_dark_background : R.color.cardview_light_background));
+        setColorValueInMemory(isChecked);
+
+
+    }
+
+
+    private void setColorValueInMemory(boolean value){
+        editor.putBoolean("BGcolor", value);
+        editor.commit();
+
+    }
+
+    private boolean getColorValueFromMemory(){
+
+        return sharePref.getBoolean("BGcolor",false);
     }
 
 

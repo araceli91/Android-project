@@ -95,8 +95,6 @@ public class RegisterActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO do something
-
                 String email = emailEt.getText().toString();
                 String password = passwordEt.getText().toString();
                 String phoneNumber = phoneNumberEt.getText().toString();
