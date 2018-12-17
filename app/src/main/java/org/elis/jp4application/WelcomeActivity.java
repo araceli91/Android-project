@@ -1,80 +1,80 @@
 package org.elis.jp4application;
 
-<<<<<<< HEAD
-import android.annotation.SuppressLint;
-=======
->>>>>>> master
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-=======
-import android.view.View;
->>>>>>> master
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import static org.elis.jp4application.MainActivity.WELCOME;
 
-<<<<<<< HEAD
-=======
-public class WelcomeActivity extends AppCompatActivity {
+    public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView welcomeTW, emailTv;
->>>>>>> master
+        TextView welcomeTW;
+        String mail;
+        String openMail;
+        Button plus, minus;
+        RecyclerView recyclerView;
+        LinearLayoutManager layoutManager;
+        FoodListAdapter adapter;
 
-public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
+        @Override
+        protected void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_welcome);
 
-    TextView welcomeTW;
-    String mail;
-    String openMail;
-    Button plus, minus;
+            welcomeTW = findViewById(R.id.welcome_tv);
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+            welcomeTW.setOnClickListener(this);
+            //plus.setOnClickListener(this);
+            //minus.setOnClickListener(this);
 
-        welcomeTW = findViewById(R.id.welcome_tv);
+            recyclerView = findViewById(R.id.food_rv);
 
-        welcomeTW.setOnClickListener(this);
-        plus.setOnClickListener(this);
-        minus.setOnClickListener(this);
+            layoutManager = new LinearLayoutManager(this);
+            ArrayList<Food> foodList = new ArrayList<>();
 
 
+            adapter = new FoodListAdapter(this, foodList);
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(layoutManager);
 
-<<<<<<< HEAD
-        if (getIntent().getStringExtra(WELCOME)!= null) {
-            mail = getIntent().getStringExtra(WELCOME);
-            welcomeTW.setText(getString(R.string.welcome) + " "+ mail);
-        } else {
-            openMail = getIntent().getData().toString();//.substring(7);
-            Log.e("ARAAPP",openMail);
-            openMail = Uri.decode(openMail);
-            Log.e("ARAAPP",openMail);
-            welcomeTW.setText(openMail);
-        }
 
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view.getId() == R.id.welcome_tv) {
-            Intent i = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                    "mailto", mail, null));
-            startActivity(Intent.createChooser(i, "Choose an Email client :"));
+            if (getIntent().getStringExtra(WELCOME) != null) {
+                mail = getIntent().getStringExtra(WELCOME);
+                welcomeTW.setText(getString(R.string.welcome) + " " + mail);
+            } else {
+                openMail = getIntent().getData().toString();//.substring(7);
+                Log.e("ARAAPP", openMail);
+                openMail = Uri.decode(openMail);
+                Log.e("ARAAPP", openMail);
+                welcomeTW.setText(openMail);
+            }
 
         }
-=======
-        welcomeTW = findViewById(R.id.welcome_tv);
-        emailTv = findViewById(R.id.email_tv);
+
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.welcome_tv) {
+                Intent i = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", mail, null));
+                startActivity(Intent.createChooser(i, "Choose an Email client :"));
+
+            }
+
+            welcomeTW = findViewById(R.id.welcome_tv);
+            welcomeTW = findViewById(R.id.email_et);
 
 
-        Intent intent = getIntent();
+            //Intent intent = getIntent();
 
        /* if(intent != null){
             if(intent.getStringExtra(MainActivity.WELCOME) != null)
@@ -93,10 +93,17 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(sendMailIntent);
             }
         });*/
+        }
+        private ArrayList <Food> getProducts(){
+            ArrayList<Food> foodList = new ArrayList<>();
+
+            foodList.add(new Food("Bread", 2.0, 0));
+            foodList.add(new Food("Orange", 3.0, 0));
+            foodList.add(new Food("Peanuts Butter", 1.5, 0));
+            foodList.add(new Food("Butter", 2.0, 0));
+            return foodList;
 
 
->>>>>>> master
+        }
     }
-
-}
 

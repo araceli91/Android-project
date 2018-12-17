@@ -13,16 +13,16 @@
             android:layout_height="33dp"
             android:layout_margin="10dp"
             android:paddingHorizontal="30dp"
-            tools:text=""
+            tools:text="ITEM"
             android:textSize="15dp"
             android:id="@+id/item_name"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="34dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:paddingHorizontal="30dp"
-            tools:text=""
+            tools:text="2,00 €"
             android:textSize="15dp"
             android:id="@+id/item_price"/>
 
@@ -37,6 +37,7 @@
                 android:textSize="15dp"
                 android:id="@+id/minus"/>
             <TextView
+                android:id="@+id/productQty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="1"

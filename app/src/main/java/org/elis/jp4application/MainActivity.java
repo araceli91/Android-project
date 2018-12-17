@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button loginBtn;
     Button registerBtn;
     Switch switchSW;
-    LinearLayout linear;
+    //LinearLayout linear;
     public static final String WELCOME = "WELCOME";
 
     Switch darkModeSwitch;
@@ -48,13 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         loginBtn = findViewById(R.id.login_btn);
         registerBtn = findViewById(R.id.register_btn);
-
-<<<<<<< HEAD
         switchSW = findViewById(R.id.onOff);
-        linear = findViewById(R.id.back);
+        //linear = findViewById(R.id.back);
 
         registerBtn.setVisibility(View.VISIBLE);
-=======
         darkModeSwitch = findViewById(R.id.dark_mode_switch);
 
         sharePref = getPreferences(Context.MODE_PRIVATE);
@@ -67,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
->>>>>>> master
 
         registerBtn.setOnClickListener(this);
 
@@ -220,9 +216,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (isChecked) {
-            linear.setBackgroundColor(getResources().getColor(R.color.backgroundDark));
+            //linear.setBackgroundColor(getResources().getColor(R.color.backgroundDark));
         } else {
-            linear.setBackgroundColor(getResources().getColor(R.color.backgroundLight));
+            //linear.setBackgroundColor(getResources().getColor(R.color.backgroundLight));
         }
     }
 }
